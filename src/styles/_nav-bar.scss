@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  background-color: #c6ffc1;
+
+  .nav-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    height: 70px;
+
+    h1 {
+      cursor: pointer;
+      font-size: 40px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: "Staatliches", cursive;
+      color: #2b4a50;
+    }
+  }
+
+  .icon {
+    display: none;
+    top: 25px;
+    overflow: hidden;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    user-select: none;
+  }
+
+  .icon div {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: #444;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+  }
+
+  .icon div:nth-child(1) {
+    top: 0;
+  }
+
+  .icon div:nth-child(2) {
+    top: 8px;
+  }
+
+  .icon div:nth-child(3) {
+    top: 16px;
+  }
+
+  .icon.open div:nth-child(1) {
+    top: 10px;
+    transform: rotate(135deg);
+  }
+
+  .icon.open div:nth-child(2) {
+    opacity: 0;
+    left: -30px;
+  }
+
+  .icon.open div:nth-child(3) {
+    top: 10px;
+    transform: rotate(-135deg);
+  }
+
+  .nav-links {
+    z-index: 1;
+    margin-right: 30px;
+    width: 380px;
+
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+
+      li {
+        cursor: pointer;
+        font-size: 18px;
+        color: #555;
+        padding: 20px 0;
+
+        &:hover {
+          color: #00cfc3;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .nav-logo {
+      margin-left: 10px;
+
+      h1 {
+        cursor: none;
+      }
+    }
+
+    .nav-links {
+      transition: height 0.5s ease;
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 70px;
+      width: 100%;
+      margin-right: 0px;
+      background-color: #c6ffc1;
+
+      ul {
+        flex-direction: column;
+
+        li {
+          cursor: none;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+    }
+    .icon {
+      display: block;
+    }
+  }
+
+  .nav-container {
+    .nav-links.open {
+      height: 180px;
+    }
+  }
+}
