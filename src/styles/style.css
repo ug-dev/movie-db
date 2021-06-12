@@ -260,4 +260,249 @@
     cursor: none;
   }
 }
+
+.categories-container {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #232323;
+}
+
+.categories-container .top-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 40px 0;
+  height: 150px;
+  width: 100%;
+}
+
+.categories-container .top-search h1 {
+  font-size: 28px;
+  text-align: center;
+  color: #e5e5e5;
+}
+
+.categories-container .top-search .categories-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.categories-container .top-search .categories-search input {
+  margin-right: 10px;
+  outline: none;
+  height: 45px;
+  width: 350px;
+  border-radius: 50px;
+  border: none;
+  padding: 0 20px;
+}
+
+.categories-container .top-search .categories-search img {
+  cursor: pointer;
+  height: 48px;
+  width: 48px;
+}
+
+.categories-container .top-search select {
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  outline: none;
+}
+
+.categories-container .main-content {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.categories-container .main-content .component {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 15px;
+  margin-bottom: 30px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 170px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.categories-container .main-content .component img {
+  height: 250px;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.categories-container .main-content .component .component-title {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #f2f2f2;
+  border-radius: 0 0 10px 10px;
+  padding: 10px 0;
+}
+
+.categories-container .main-content .component .component-title h3 {
+  font-size: 16px;
+  color: #121212;
+  margin-left: 10px;
+}
+
+.categories-container .main-content .component .component-title p {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.5;
+  margin-left: 10px;
+}
+
+.categories-container .view-more-button {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-item-align: center;
+      align-self: center;
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+.categories-container .view-more-button .button {
+  cursor: pointer;
+  background-color: #00cfc3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  padding: 20px 50px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.categories-container .view-more-button .button h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #323232;
+}
+
+@media only screen and (max-width: 600px) {
+  .categories-container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .categories-container .top-search .categories-search {
+    width: 100%;
+  }
+  .categories-container .top-search .categories-search input {
+    width: 100%;
+  }
+  .categories-container .top-search .categories-search img {
+    cursor: none;
+  }
+  .categories-container .main-content .component {
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    width: 180px;
+  }
+  .categories-container .view-more-button .button {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .categories-container .main-content .component {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    width: 220px;
+  }
+  .categories-container .main-content .component img {
+    height: 400px;
+  }
+}
 /*# sourceMappingURL=style.css.map */
