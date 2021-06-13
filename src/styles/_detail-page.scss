@@ -1,0 +1,421 @@
+.detail-container {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #232323;
+
+  .detail {
+    height: 600px;
+    width: 100%;
+    background-color: #232323;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+
+    .bg-mask {
+      position: absolute;
+      background-image: url(../images/detail-bg.jpg);
+      height: 600px;
+      opacity: 0.15;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+
+    .poster {
+      z-index: 1;
+      height: 420px;
+      width: 300px;
+      margin-left: 60px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+
+      img {
+        user-select: none;
+        height: 420px;
+        width: 300px;
+        border-radius: 8px;
+      }
+    }
+
+    .info {
+      z-index: 1;
+      height: 400px;
+      width: 850px;
+      margin-right: 60px;
+      margin-left: 40px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: column;
+
+      .title {
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        h1 {
+          font-size: 32px;
+          color: #f2f2f2;
+          letter-spacing: 1px;
+        }
+
+        .subtitle {
+          display: flex;
+
+          p {
+            font-size: 16px;
+          }
+
+          p:nth-child(1) {
+            margin-right: 20px;
+            color: #aeaeae;
+          }
+
+          p:nth-child(2) {
+            color: #ddd;
+          }
+        }
+      }
+
+      .rattings {
+        display: flex;
+        align-items: center;
+        height: fit-content;
+        padding: 10px 0;
+
+        .user-score {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .circle {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            background-color: #00a7c2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+
+            p {
+              font-size: 18px;
+            }
+          }
+
+          p {
+            color: #ddd;
+          }
+        }
+
+        .network {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 30px;
+          height: fit-content;
+          width: fit-content;
+          padding: 15px;
+          border-radius: 5px;
+          background-color: #f2f2f2;
+
+          img {
+            margin-right: 15px;
+          }
+
+          p {
+            color: #222;
+          }
+        }
+      }
+
+      .overview {
+        h2 {
+          font-size: 22px;
+          color: #ddd;
+          letter-spacing: 1px;
+          line-height: 2;
+        }
+
+        p {
+          font-size: 16px;
+          color: #ddd;
+          line-height: 2;
+        }
+      }
+    }
+  }
+
+  .cast-detail {
+    height: fit-content;
+    width: 100%;
+    background-color: #232323;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+
+    h1 {
+      font-size: 24px;
+      color: #ddd;
+      margin-left: 30px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    .component {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 0 15px;
+      margin-bottom: 30px;
+      height: fit-content;
+      width: 170px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+
+      img {
+        height: 200px;
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .component-title {
+        height: fit-content;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        background-color: #f2f2f2;
+        border-radius: 0 0 10px 10px;
+        padding: 10px 0;
+
+        h3 {
+          font-size: 16px;
+          color: #121212;
+          margin-left: 10px;
+        }
+
+        p {
+          font-size: 12px;
+          color: #444;
+          line-height: 1.5;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .seasons-detail {
+    height: fit-content;
+    width: 100%;
+    background-color: #232323;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 0;
+
+    .title {
+      margin-left: 30px;
+
+      h1 {
+        font-size: 24px;
+        color: #ddd;
+      }
+    }
+
+    .season-info {
+      margin-top: 30px;
+      background-color: #f2f2f2;
+      margin-left: 30px;
+      margin-right: 30px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 200px;
+        width: 150px;
+        border-radius: 5px 0 0 5px;
+      }
+
+      .card-detail {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-left: 20px;
+        margin-right: 20px;
+
+        h1 {
+          font-size: 24px;
+          color: #121212;
+          line-height: 1.5;
+        }
+
+        #subtitle {
+          font-size: 16px;
+        }
+
+        #info {
+          margin-top: 20px;
+          line-height: 1.5;
+          color: #444;
+        }
+      }
+    }
+  }
+
+  .view-more-button {
+    height: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    padding-bottom: 30px;
+    padding-top: 10px;
+
+    .button {
+      cursor: pointer;
+      background-color: #00cfc3;
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      padding: 20px 50px;
+      border-radius: 5px;
+      margin-right: 30px;
+
+      h2 {
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #323232;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 940px) {
+  .detail-container {
+    .detail {
+      height: fit-content;
+      flex-direction: column;
+      align-items: center;
+
+      .bg-mask {
+        background-image: none;
+      }
+
+      .poster {
+        margin-top: 50px;
+        margin-left: 0;
+      }
+
+      .info {
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 50px;
+        width: 100%;
+        height: fit-content;
+        margin-right: 0;
+        margin-left: 0;
+
+        .title {
+          align-items: center;
+          width: 100%;
+          height: 60px;
+        }
+
+        .rattings {
+          flex-direction: column;
+          width: 100%;
+          margin-top: 30px;
+
+          .network {
+            margin-left: 0;
+            margin-top: 20px;
+          }
+        }
+
+        .overview {
+          width: 100%;
+          margin-top: 30px;
+
+          h2 {
+            padding: 0 20px;
+          }
+
+          p {
+            padding: 0 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .detail-container {
+    .detail {
+      .info {
+        .title {
+          height: 50px;
+          h1 {
+            font-size: 24px;
+          }
+
+          .subtitle {
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .overview {
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .seasons-detail {
+      height: fit-content;
+      .season-info {
+        align-items: flex-start;
+        height: fit-content;
+        flex-direction: column;
+
+        img {
+          margin-left: 20px;
+          margin-top: 20px;
+          border-radius: 5px;
+        }
+
+        .card-detail {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .view-more-button {
+      width: 100%;
+
+      .button {
+        width: 100%;
+        margin-left: 30px;
+      }
+    }
+  }
+}
