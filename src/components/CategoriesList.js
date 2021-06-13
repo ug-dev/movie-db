@@ -1,5 +1,10 @@
 import Search from "../images/search-icon.svg";
 import ComponentImg from "../images/component-img.jpg";
+import { Link } from "react-router-dom";
+
+const navstyle = {
+  textDecoration: "none",
+};
 
 function CategoriesList() {
   const Compo = () => {
@@ -7,7 +12,9 @@ function CategoriesList() {
       <div className="component">
         <img src={ComponentImg} alt="" />
         <div className="component-title">
-          <h3>The Avengers</h3>
+          <Link style={navstyle} to="/detail-page">
+            <h3>The Avengers</h3>
+          </Link>
           <p>May 26, 2019</p>
         </div>
       </div>

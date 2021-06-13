@@ -100,7 +100,7 @@
 }
 
 .nav-container .nav-links {
-  z-index: 1;
+  z-index: 2;
   margin-right: 30px;
   width: 380px;
 }
@@ -422,6 +422,10 @@
   margin-left: 10px;
 }
 
+.categories-container .main-content .component .component-title h3:hover {
+  color: #00a7c2;
+}
+
 .categories-container .main-content .component .component-title p {
   font-size: 12px;
   color: #444;
@@ -483,6 +487,7 @@
     cursor: none;
   }
   .categories-container .main-content .component {
+    cursor: none;
     -webkit-box-flex: 0;
         -ms-flex-positive: 0;
             flex-grow: 0;
@@ -503,6 +508,567 @@
   }
   .categories-container .main-content .component img {
     height: 400px;
+  }
+}
+
+.detail-container {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #232323;
+}
+
+.detail-container .detail {
+  height: 600px;
+  width: 100%;
+  background-color: #232323;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.detail-container .detail .bg-mask {
+  position: absolute;
+  background-image: url(../images/detail-bg.jpg);
+  height: 600px;
+  opacity: 0.15;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.detail-container .detail .poster {
+  z-index: 1;
+  height: 420px;
+  width: 300px;
+  margin-left: 60px;
+  border-radius: 8px;
+  -webkit-box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.detail-container .detail .poster img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  height: 420px;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.detail-container .detail .info {
+  z-index: 1;
+  height: 400px;
+  width: 850px;
+  margin-right: 60px;
+  margin-left: 40px;
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.detail-container .detail .info .title {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.detail-container .detail .info .title h1 {
+  font-size: 32px;
+  color: #f2f2f2;
+  letter-spacing: 1px;
+}
+
+.detail-container .detail .info .title .subtitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.detail-container .detail .info .title .subtitle p {
+  font-size: 16px;
+}
+
+.detail-container .detail .info .title .subtitle p:nth-child(1) {
+  margin-right: 20px;
+  color: #aeaeae;
+}
+
+.detail-container .detail .info .title .subtitle p:nth-child(2) {
+  color: #ddd;
+}
+
+.detail-container .detail .info .rattings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 10px 0;
+}
+
+.detail-container .detail .info .rattings .user-score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.detail-container .detail .info .rattings .user-score .circle {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: #00a7c2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+}
+
+.detail-container .detail .info .rattings .user-score .circle p {
+  font-size: 18px;
+}
+
+.detail-container .detail .info .rattings .user-score p {
+  color: #ddd;
+}
+
+.detail-container .detail .info .rattings .network {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 30px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.detail-container .detail .info .rattings .network img {
+  margin-right: 15px;
+}
+
+.detail-container .detail .info .rattings .network p {
+  color: #222;
+}
+
+.detail-container .detail .info .overview h2 {
+  font-size: 22px;
+  color: #ddd;
+  letter-spacing: 1px;
+  line-height: 2;
+}
+
+.detail-container .detail .info .overview p {
+  font-size: 16px;
+  color: #ddd;
+  line-height: 2;
+}
+
+.detail-container .cast-detail {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  background-color: #232323;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.detail-container .cast-detail h1 {
+  font-size: 24px;
+  color: #ddd;
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.detail-container .cast-detail .component {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 15px;
+  margin-bottom: 30px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 170px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.detail-container .cast-detail .component img {
+  height: 200px;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.detail-container .cast-detail .component .component-title {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #f2f2f2;
+  border-radius: 0 0 10px 10px;
+  padding: 10px 0;
+}
+
+.detail-container .cast-detail .component .component-title h3 {
+  font-size: 16px;
+  color: #121212;
+  margin-left: 10px;
+}
+
+.detail-container .cast-detail .component .component-title p {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.5;
+  margin-left: 10px;
+}
+
+.detail-container .seasons-detail {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  background-color: #232323;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 20px 0;
+}
+
+.detail-container .seasons-detail .title {
+  margin-left: 30px;
+}
+
+.detail-container .seasons-detail .title h1 {
+  font-size: 24px;
+  color: #ddd;
+}
+
+.detail-container .seasons-detail .season-info {
+  margin-top: 30px;
+  background-color: #f2f2f2;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.detail-container .seasons-detail .season-info img {
+  height: 200px;
+  width: 150px;
+  border-radius: 5px 0 0 5px;
+}
+
+.detail-container .seasons-detail .season-info .card-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.detail-container .seasons-detail .season-info .card-detail h1 {
+  font-size: 24px;
+  color: #121212;
+  line-height: 1.5;
+}
+
+.detail-container .seasons-detail .season-info .card-detail #subtitle {
+  font-size: 16px;
+}
+
+.detail-container .seasons-detail .season-info .card-detail #info {
+  margin-top: 20px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.detail-container .view-more-button {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+.detail-container .view-more-button .button {
+  cursor: pointer;
+  background-color: #00cfc3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  padding: 20px 50px;
+  border-radius: 5px;
+  margin-right: 30px;
+}
+
+.detail-container .view-more-button .button h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #323232;
+}
+
+@media only screen and (max-width: 940px) {
+  .detail-container .detail {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .detail-container .detail .bg-mask {
+    background-image: none;
+  }
+  .detail-container .detail .poster {
+    margin-top: 50px;
+    margin-left: 0;
+  }
+  .detail-container .detail .info {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 50px;
+    width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .detail-container .detail .info .title {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    height: 60px;
+  }
+  .detail-container .detail .info .rattings {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    margin-top: 30px;
+  }
+  .detail-container .detail .info .rattings .network {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  .detail-container .detail .info .overview {
+    width: 100%;
+    margin-top: 30px;
+  }
+  .detail-container .detail .info .overview h2 {
+    padding: 0 20px;
+  }
+  .detail-container .detail .info .overview p {
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .detail-container .detail .info .title {
+    height: 50px;
+  }
+  .detail-container .detail .info .title h1 {
+    font-size: 24px;
+  }
+  .detail-container .detail .info .title .subtitle p {
+    font-size: 14px;
+  }
+  .detail-container .detail .info .overview p {
+    font-size: 14px;
+  }
+  .detail-container .seasons-detail {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .detail-container .seasons-detail .season-info {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .detail-container .seasons-detail .season-info img {
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  .detail-container .seasons-detail .season-info .card-detail {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .detail-container .view-more-button {
+    width: 100%;
+  }
+  .detail-container .view-more-button .button {
+    width: 100%;
+    margin-left: 30px;
   }
 }
 /*# sourceMappingURL=style.css.map */

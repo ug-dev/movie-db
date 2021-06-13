@@ -95,6 +95,10 @@
           font-size: 16px;
           color: #121212;
           margin-left: 10px;
+
+          &:hover {
+            color: #00a7c2;
+          }
         }
 
         p {
@@ -155,6 +159,7 @@
 
     .main-content {
       .component {
+        cursor: none;
         flex-grow: 0;
         width: 180px;
       }
