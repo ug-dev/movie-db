@@ -296,7 +296,9 @@
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 40px 0;
-  height: 150px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 100%;
 }
 
@@ -310,6 +312,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 10px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -338,6 +341,7 @@
   width: 200px;
   height: 30px;
   border: none;
+  margin-top: 15px;
   border-radius: 5px;
   padding: 0 10px;
   outline: none;
@@ -387,6 +391,10 @@
           box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
 }
 
+.categories-container .main-content .component:hover .component-title h3 {
+  color: #00a7c2;
+}
+
 .categories-container .main-content .component img {
   height: 250px;
   width: 100%;
@@ -420,10 +428,6 @@
   font-size: 16px;
   color: #121212;
   margin-left: 10px;
-}
-
-.categories-container .main-content .component .component-title h3:hover {
-  color: #00a7c2;
 }
 
 .categories-container .main-content .component .component-title p {
@@ -530,6 +534,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #232323;
+  overflow: hidden;
 }
 
 .detail-container .detail {
@@ -583,7 +588,7 @@
 
 .detail-container .detail .info {
   z-index: 1;
-  height: 400px;
+  height: 380px;
   width: 850px;
   margin-right: 60px;
   margin-left: 40px;
@@ -754,14 +759,35 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  padding: 20px 24px;
+}
+
+.detail-container .cast-detail .cast-scroll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: auto;
+  width: 100%;
+}
+
+.detail-container .cast-detail .cast-scroll::-webkit-scrollbar-thumb {
+  background-color: #c8c8c8;
+  border-radius: 20px;
+}
+
+.detail-container .cast-detail .cast-scroll::-webkit-scrollbar-track {
+  background: rgba(200, 200, 200, 0.1);
+}
+
+.detail-container .cast-detail .cast-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
 }
 
 .detail-container .cast-detail h1 {
   font-size: 24px;
   color: #ddd;
-  margin-left: 30px;
-  margin-top: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .detail-container .cast-detail .component {
@@ -781,10 +807,8 @@
           flex-direction: column;
   margin: 0 15px;
   margin-bottom: 30px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 170px;
+  height: auto;
+  min-width: 170px;
   border-radius: 10px;
   -webkit-box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
           box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
@@ -804,9 +828,12 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -851,7 +878,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding: 20px 0;
+  padding-top: 20px;
 }
 
 .detail-container .seasons-detail .title {
@@ -933,7 +960,7 @@
   -ms-flex-item-align: end;
       align-self: flex-end;
   padding-bottom: 30px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .detail-container .view-more-button .button {
@@ -1070,5 +1097,10 @@
     width: 100%;
     margin-left: 30px;
   }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 /*# sourceMappingURL=style.css.map */

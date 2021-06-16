@@ -9,15 +9,13 @@ const navstyle = {
 function CategoriesList() {
   const Compo = () => {
     return (
-      <div className="component">
+      <Link style={navstyle} className="component" to="/detail-page">
         <img src={ComponentImg} alt="" />
         <div className="component-title">
-          <Link style={navstyle} to="/detail-page">
-            <h3>The Avengers</h3>
-          </Link>
+          <h3>The Avengers</h3>
           <p>May 26, 2019</p>
         </div>
-      </div>
+      </Link>
     );
   };
 

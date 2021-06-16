@@ -6,6 +6,7 @@
   align-items: center;
   flex-direction: column;
   background-color: #232323;
+  overflow: hidden;
 
   .detail {
     height: 600px;
@@ -44,7 +45,7 @@
 
     .info {
       z-index: 1;
-      height: 400px;
+      height: 380px;
       width: 850px;
       margin-right: 60px;
       margin-left: 40px;
@@ -161,13 +162,30 @@
     justify-content: center;
     flex-direction: column;
     align-items: flex-start;
+    padding: 20px 24px;
+
+    .cast-scroll {
+      display: flex;
+      overflow: auto;
+      width: 100%;
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba(200, 200, 200, 1);
+        border-radius: 20px;
+      }
+      &::-webkit-scrollbar-track {
+        background: rgba(200, 200, 200, 0.1);
+      }
+      &::-webkit-scrollbar {
+        height: 6px;
+        width: 6px;
+      }
+    }
 
     h1 {
       font-size: 24px;
       color: #ddd;
-      margin-left: 30px;
-      margin-top: 20px;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
     }
 
     .component {
@@ -178,8 +196,8 @@
       flex-direction: column;
       margin: 0 15px;
       margin-bottom: 30px;
-      height: fit-content;
-      width: 170px;
+      height: auto;
+      min-width: 170px;
       border-radius: 10px;
       box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
 
@@ -193,7 +211,8 @@
         height: fit-content;
         width: 100%;
         display: flex;
-        justify-content: center;
+        flex: 1;
+        justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;
         background-color: #f2f2f2;
@@ -224,7 +243,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 20px 0;
+    padding-top: 20px;
 
     .title {
       margin-left: 30px;
@@ -284,7 +303,7 @@
     justify-content: flex-end;
     align-self: flex-end;
     padding-bottom: 30px;
-    padding-top: 10px;
+    padding-top: 20px;
 
     .button {
       cursor: pointer;

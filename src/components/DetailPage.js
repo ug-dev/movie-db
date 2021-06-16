@@ -1,21 +1,17 @@
-import React, { useRef } from "react";
+import React from "react";
 import ComponentImg from "../images/component-img.jpg";
 import Cast from "../images/cast.jpg";
 import Network from "../images/network.png";
-import AliceCarousel from "react-alice-carousel";
 import Season from "../images/season.jpg";
-import "react-alice-carousel/lib/alice-carousel.css";
 
 function DetailPage() {
-  const myRef = useRef();
-
   const Item = () => {
     return (
       <div className="component">
         <img src={Cast} alt="" />
         <div className="component-title">
-          <h3>The Avengers</h3>
-          <p>May 26, 2019</p>
+          <h3>Chris Evans</h3>
+          <p>Captain America / Steve Rogers</p>
         </div>
       </div>
     );
@@ -80,15 +76,7 @@ function DetailPage() {
       </div>
       <div className="cast-detail">
         <h1>Full Cast</h1>
-        <AliceCarousel
-          mouseTracking={true}
-          disableButtonsControls={true}
-          disableDotsControls={true}
-          infinite={false}
-          responsive={{
-            1024: { items: 5 },
-          }}
-        >
+        <div className="cast-scroll">
           <Item />
           <Item />
           <Item />
@@ -100,18 +88,12 @@ function DetailPage() {
           <Item />
           <Item />
           <Item />
-        </AliceCarousel>
+        </div>
       </div>
       <div className="seasons-detail">
         <div className="title">
           <h1>Seasons</h1>
         </div>
-        <SeasonComp />
-        <SeasonComp />
-        <SeasonComp />
-        <SeasonComp />
-        <SeasonComp />
-        <SeasonComp />
         <SeasonComp />
       </div>
       <div className="view-more-button">
