@@ -12,7 +12,7 @@
     align-items: center;
     flex-direction: column;
     padding: 40px 0;
-    height: 150px;
+    height: fit-content;
     width: 100%;
 
     h1 {
@@ -23,6 +23,7 @@
 
     .categories-search {
       display: flex;
+      margin-top: 10px;
       justify-content: center;
       align-items: center;
 
@@ -47,6 +48,7 @@
       width: 200px;
       height: 30px;
       border: none;
+      margin-top: 15px;
       border-radius: 5px;
       padding: 0 10px;
       outline: none;
@@ -74,6 +76,13 @@
       border-radius: 10px;
       box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
 
+      &:hover {
+        .component-title {
+          h3 {
+            color: #00a7c2;
+          }
+        }
+      }
       img {
         height: 250px;
         width: 100%;
@@ -95,10 +104,6 @@
           font-size: 16px;
           color: #121212;
           margin-left: 10px;
-
-          &:hover {
-            color: #00a7c2;
-          }
         }
 
         p {
