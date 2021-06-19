@@ -1,26 +1,26 @@
 import { put, takeLatest } from "redux-saga/effects";
 import { popularListSuccess } from "./PopularActions";
 
-const getPopularMovieList = async () => {
+const getPopularMovieList = async (counter) => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/popular?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US&page=${counter}`
   );
   const result = await res.json();
 
   return result;
 };
 
-const getPopularTVList = async () => {
+const getPopularTVList = async (counter) => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/tv/popular?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US&page=1"
+    `https://api.themoviedb.org/3/tv/popular?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US&page=${counter}`
   );
   const result = await res.json();
   return result;
 };
 
-function* fetchPopularMovieList() {
+function* fetchPopularMovieList({ payload }) {
   try {
-    const data = yield getPopularMovieList();
+    const data = yield getPopularMovieList(payload);
 
     const results = data.results;
     const movieList = results.map((movie) => {
@@ -38,9 +38,9 @@ function* fetchPopularMovieList() {
   }
 }
 
-function* fetchPopularTVList() {
+function* fetchPopularTVList({ payload }) {
   try {
-    const data = yield getPopularTVList();
+    const data = yield getPopularTVList(payload);
 
     const results = data.results;
 
