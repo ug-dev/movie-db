@@ -23,7 +23,7 @@
 
     .categories-search {
       display: flex;
-      margin-top: 10px;
+      margin-top: 20px;
       justify-content: center;
       align-items: center;
 
@@ -44,35 +44,58 @@
       }
     }
 
-    select {
-      width: 200px;
-      height: 30px;
-      border: none;
+    .categories-buttons {
+      width: 100%;
+      height: fit-content;
       margin-top: 15px;
-      border-radius: 5px;
-      padding: 0 10px;
-      outline: none;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+
+      button {
+        cursor: pointer;
+        height: 40px;
+        width: 100px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        background-color: #00cfc3;
+        color: #323232;
+
+        &:hover {
+          box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      #movies {
+        margin-right: 15px;
+      }
     }
   }
 
   .main-content {
     height: fit-content;
-    width: 90%;
+    width: 90vw;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
     flex-wrap: wrap;
 
+    .myMovieCard {
+      width: calc(90vw / 5);
+      display: flex;
+      justify-content: center;
+    }
     .component {
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      margin: 0 15px;
+      // margin: 0 15px;
       margin-bottom: 30px;
       height: fit-content;
-      width: 170px;
+      width: 80%;
       border-radius: 10px;
       box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
 
@@ -84,13 +107,12 @@
         }
       }
       img {
-        height: 250px;
+        height: auto;
         width: 100%;
         border-radius: 10px 10px 0 0;
       }
 
       .component-title {
-        height: fit-content;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -101,12 +123,17 @@
         padding: 10px 0;
 
         h3 {
+          width: 90%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
           font-size: 16px;
           color: #121212;
           margin-left: 10px;
         }
 
         p {
+          text-overflow: ellipsis;
           font-size: 12px;
           color: #444;
           line-height: 1.5;
@@ -144,7 +171,35 @@
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  .categories-container {
+    .main-content {
+      .myMovieCard {
+        width: calc(90vw / 4);
+      }
+    }
+  }
+}
+@media only screen and (max-width: 900px) {
+  .categories-container {
+    .main-content {
+      .myMovieCard {
+        width: calc(90vw / 2);
+      }
+    }
+  }
+}
 @media only screen and (max-width: 600px) {
+  .categories-container {
+    .main-content {
+      .myMovieCard {
+        width: calc(90vw / 2);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
   .categories-container {
     padding-right: 15px;
     padding-left: 15px;
@@ -163,10 +218,11 @@
     }
 
     .main-content {
+      .myMovieCard {
+        width: calc(90vw / 1);
+      }
       .component {
         cursor: none;
-        flex-grow: 0;
-        width: 180px;
       }
     }
 
@@ -174,21 +230,6 @@
       .button {
         width: 100%;
         margin-right: 0;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .categories-container {
-    .main-content {
-      .component {
-        flex-grow: 1;
-        width: 220px;
-
-        img {
-          height: 400px;
-        }
       }
     }
   }

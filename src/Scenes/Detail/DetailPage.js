@@ -1,10 +1,13 @@
 import React from "react";
-import ComponentImg from "../images/component-img.jpg";
-import Cast from "../images/cast.jpg";
-import Network from "../images/network.png";
-import Season from "../images/season.jpg";
+import ComponentImg from "../../images/component-img.jpg";
+import Cast from "../../images/component-img.jpg";
+import NetworkIMG from "../../images/network.png";
+import Season from "../../images/season.jpg";
+import { useSelector, useDispatch } from "react-redux";
 
 function DetailPage() {
+  const { movieCategory } = useSelector((state) => state);
+
   const Item = () => {
     return (
       <div className="component">
@@ -34,6 +37,15 @@ function DetailPage() {
     );
   };
 
+  const Network = () => {
+    return (
+      <div className="network">
+        <img src={NetworkIMG} alt="" />
+        <p>Network</p>
+      </div>
+    );
+  };
+
   return (
     <div className="detail-container">
       <div className="detail">
@@ -56,10 +68,7 @@ function DetailPage() {
               </div>
               <p>User Score</p>
             </div>
-            <div className="network">
-              <img src={Network} alt="" />
-              <p>Network</p>
-            </div>
+            {movieCategory === false ? <Network /> : ""}
           </div>
           <div className="overview">
             <h2>Overview</h2>
