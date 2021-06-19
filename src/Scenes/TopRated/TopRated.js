@@ -67,38 +67,43 @@ function TopRated() {
   return (
     <div className="categories-container">
       <div className="top-search">
-        <h1>Top Rated {movieCategory ? "Movies" : "TV Series"}</h1>
-        <div className="categories-search">
-          <input type="text" placeholder="Search query" />
-          <img src={Search} alt="" />
-        </div>
+        <h1>Latest {movieCategory ? "Movies" : "TV Series"}</h1>
         <div className="categories-buttons">
-          <button onClick={movieHandler} id="movies">
+          <button onClick={movieHandler} id={movieCategory && "active"}>
             Movies
           </button>
-          <button onClick={tvHandler}>TV Series</button>
+          <button onClick={tvHandler} id={!movieCategory && "active"}>
+            TV Series
+          </button>
+        </div>
+        <div className="searchCard">
+          <h2>Search</h2>
+          <div className="categories-search">
+            <input type="text" placeholder="Search query" />
+            {/* <img src={Search} alt="" /> */}
+            <div className="searchButton">Search</div>
+          </div>
         </div>
       </div>
-      <div className="main-content">
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : (
-          topRatedList.map((e) => (
+      {isLoading ? (
+        <div className="loadingContainer">Loading...</div>
+      ) : (
+        <div className="main-content">
+          {topRatedList.map((e) => (
             <Compo
-              key={e.id}
               id={e.id}
               posterPath={e.poster_path}
               title={e.title}
               relDate={e.release_date}
             />
-          ))
-        )}
-      </div>
-      <div className="view-more-button">
-        <div className="button">
-          <h2>View More</h2>
+          ))}
+          <div className="view-more-button">
+            <div className="button">
+              <h2>View More</h2>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
