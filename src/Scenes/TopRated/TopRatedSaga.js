@@ -1,25 +1,25 @@
 import { put, takeLatest } from "redux-saga/effects";
 import { topRatedListSuccess } from "./TopRatedActions";
 
-const getTopRatedMovieList = async () => {
+const getTopRatedMovieList = async (counter) => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US&page=${counter}`
   );
   const result = await res.json();
   return result;
 };
 
-const getTopRatedTVList = async () => {
+const getTopRatedTVList = async (counter) => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/tv/top_rated?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US&page=1"
+    `https://api.themoviedb.org/3/tv/top_rated?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US&page=${counter}`
   );
   const result = await res.json();
   return result;
 };
 
-function* fetchTopRatedMovieList() {
+function* fetchTopRatedMovieList({ payload }) {
   try {
-    const data = yield getTopRatedMovieList();
+    const data = yield getTopRatedMovieList(payload);
 
     const results = data.results;
     const movieList = results.map((movie) => {
@@ -37,9 +37,9 @@ function* fetchTopRatedMovieList() {
   }
 }
 
-function* fetchTopRatedTVList() {
+function* fetchTopRatedTVList({ payload }) {
   try {
-    const data = yield getTopRatedTVList();
+    const data = yield getTopRatedTVList(payload);
 
     const results = data.results;
     const movieList = results.map((movie) => {

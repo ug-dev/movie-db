@@ -13,6 +13,7 @@ const allReducers = combineReducers({
   topRatedList: topRatedReducer,
   latestList: latestReducer,
   castDetail: DetailReducer,
+  productDetail: productDetailReducer,
 });
 
 export default allReducers;

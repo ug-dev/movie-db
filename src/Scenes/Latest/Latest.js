@@ -2,9 +2,10 @@ import Search from "../../images/search-icon.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
-import { productDetail } from "../Detail/DetailActions";
+import { productDetail, productTvDetail } from "../Detail/DetailActions";
 import { category } from "../GlobalActions";
 import { getLatestList, getLatestTvList } from "./LatestActions";
+import Default from "../../images/default.jpg";
 
 const navstyle = {
   textDecoration: "none",
@@ -55,16 +56,28 @@ function Latest() {
   };
 
   const Compo = ({ id, posterPath, title, relDate }) => {
+    const setDetailPage = () => {
+      if (movieCategory) {
+        dispatch(productDetail(id));
+      } else {
+        dispatch(productTvDetail(id));
+      }
+    };
+
     return (
       <div className={"myMovieCard"}>
         <Link
-          onClick={() => dispatch(productDetail(id))}
+          onClick={setDetailPage}
           style={navstyle}
           className="component"
           to="/detail-page"
         >
           <img
-            src={`https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`}
+            src={
+              posterPath != null
+                ? `https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`
+                : Default
+            }
             alt=""
           />
           <div className="component-title">
@@ -97,6 +110,7 @@ function Latest() {
         ) : (
           latestList.map((e) => (
             <Compo
+              key={e.id}
               id={e.id}
               posterPath={e.poster_path}
               title={e.title}
@@ -107,7 +121,7 @@ function Latest() {
       </div>
       <div className="view-more-button">
         <div onClick={getCounter} className="button">
-          <h2>View More</h2>
+          <h2>Next Page</h2>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
-const DetailReducer = (state = { movieDetail: {}, tvDetail: {} }, action) => {
+const DetailReducer = (state = "", action) => {
   switch (action.type) {
-    case "DETAIL_SUCCESS":
-      return (state.movieDetail = action.payload);
+    case "PRODUCT_DETAIL_SUCCESS":
+      return (state = action.payload);
     default:
       return state;
   }

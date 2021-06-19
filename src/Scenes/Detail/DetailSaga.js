@@ -7,15 +7,15 @@ import {
 
 const getDetailMovieList = async (id) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/tv/${id}?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US`
   );
   const result = await res.json();
   return result;
 };
 
-const getDetailTVList = async () => {
+const getDetailTVList = async (id) => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/tv/62560?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US"
+    `https://api.themoviedb.org/3/tv/${id}?api_key=f8707b3bfc1a734d4b29ef887af428bd&language=en-US`
   );
   const result = await res.json();
   return result;
@@ -93,19 +93,22 @@ function* fetchDetailMovieList({ payload }) {
   try {
     const data = yield getDetailMovieList(payload);
 
-    const results = data.results;
-    const productDetail = results.map((movie) => {
-      return {
-        id: movie.id,
-        backgrop_path: movie.backgrop_path,
-        poster_path: movie.poster_path,
-        title: movie.title,
-        release_date: movie.release_date,
-        overview: movie.overview,
-        vote_count: movie.vote_count,
-        genres: movie.genres,
-      };
+    const productDetail = {};
+    const genere = [];
+
+    productDetail.id = data.id;
+    productDetail.backdrop_path = data.backdrop_path;
+    productDetail.poster_path = data.poster_path;
+    productDetail.title = data.title;
+    productDetail.release_date = data.release_date;
+    productDetail.overview = data.overview;
+    productDetail.vote_average = data.vote_average;
+
+    data.genres.forEach((element) => {
+      genere.push(element.name);
     });
+
+    productDetail.generes = genere.join(", ");
 
     yield put(productDetailSuccess(productDetail));
   } catch (e) {
@@ -113,25 +116,28 @@ function* fetchDetailMovieList({ payload }) {
   }
 }
 
-function* fetchDetailTVList() {
+function* fetchDetailTVList({ payload }) {
   try {
-    const data = yield getDetailTVList();
+    const data = yield getDetailTVList(payload);
 
-    const results = data.results;
-    const productDetail = results.map((movie) => {
-      return {
-        id: movie.id,
-        backgrop_path: movie.backgrop_path,
-        poster_path: movie.poster_path,
-        title: movie.title,
-        release_date: movie.release_date,
-        overview: movie.overview,
-        vote_count: movie.vote_count,
-        genres: movie.genres,
-        networks: movie.networks[0].logo_path,
-        seasons: movie.seasons,
-      };
+    const productDetail = {};
+    const genere = [];
+
+    productDetail.id = data.id;
+    productDetail.backdrop_path = data.backdrop_path;
+    productDetail.poster_path = data.poster_path;
+    productDetail.title = data.name;
+    productDetail.release_date = data.first_air_date;
+    productDetail.overview = data.overview;
+    productDetail.vote_average = data.vote_average;
+    productDetail.network = data.networks[0].logo_path;
+    productDetail.seasons = data.seasons;
+
+    data.genres.forEach((element) => {
+      genere.push(element.name);
     });
+
+    productDetail.generes = genere.join(", ");
 
     yield put(productDetailSuccess(productDetail));
   } catch (e) {
