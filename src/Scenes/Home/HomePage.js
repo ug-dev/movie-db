@@ -1,4 +1,4 @@
-import Search from "../images/search-icon.svg";
+import Search from "../../images/search-icon.svg";
 
 function HomePage() {
   return (

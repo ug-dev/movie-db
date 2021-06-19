@@ -1,9 +1,11 @@
 import "./App.css";
-import HomePage from "./components/HomePage";
-import CategoriesList from "./components/CategoriesList";
-import DetailPage from "./components/DetailPage";
-import NavBar from "./components/NavBar";
+import HomePage from "./Scenes/Home/HomePage";
+import Popular from "./Scenes/Popular/Popular";
+import TopRated from "./Scenes/TopRated/TopRated";
+import DetailPage from "./Scenes/Detail/DetailPage";
+import NavBar from "./Scenes/Components/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Latest from "./Scenes/Latest/Latest";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
         <NavBar />
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/categories" component={CategoriesList} />
+          <Route path="/popular" component={Popular} />
+          <Route path="/top-rated" component={TopRated} />
+          <Route path="/latest" component={Latest} />
           <Route path="/detail-page" component={DetailPage} />
         </Switch>
       </Router>

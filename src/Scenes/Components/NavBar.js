@@ -31,13 +31,13 @@ function NavBar() {
       </div>
       <div className={`nav-links ${menu}`}>
         <ul>
-          <Link style={navstyle} onClick={closeMenu} to="/categories">
+          <Link style={navstyle} onClick={closeMenu} to="/latest">
             <li>Latest</li>
           </Link>
-          <Link style={navstyle} onClick={closeMenu} to="/categories">
+          <Link style={navstyle} onClick={closeMenu} to="/popular">
             <li>Popular</li>
           </Link>
-          <Link style={navstyle} onClick={closeMenu} to="/categories">
+          <Link style={navstyle} onClick={closeMenu} to="/top-rated">
             <li>Top Rated</li>
           </Link>
         </ul>
