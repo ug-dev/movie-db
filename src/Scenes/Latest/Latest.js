@@ -2,9 +2,10 @@ import Search from "../../images/search-icon.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
-import { productDetail } from "../Detail/DetailActions";
+import { productDetail, productTvDetail } from "../Detail/DetailActions";
 import { category } from "../GlobalActions";
 import { getLatestList, getLatestTvList } from "./LatestActions";
+import Default from "../../images/default.jpg";
 
 const navstyle = {
   textDecoration: "none",
@@ -26,8 +27,10 @@ function Latest() {
   }, []);
 
   useEffect(() => {
-    setisLoading(false);
     window.scrollTo(0, 0);
+    setTimeout(() => {
+      setisLoading(false);
+    }, 500);
   }, [latestList]);
 
   const getCounter = () => {
@@ -55,16 +58,28 @@ function Latest() {
   };
 
   const Compo = ({ id, posterPath, title, relDate }) => {
+    const setDetailPage = () => {
+      if (movieCategory) {
+        dispatch(productDetail(id));
+      } else {
+        dispatch(productTvDetail(id));
+      }
+    };
+
     return (
       <div className={"myMovieCard"}>
         <Link
-          onClick={() => dispatch(productDetail(id))}
+          onClick={setDetailPage}
           style={navstyle}
           className="component"
           to="/detail-page"
         >
           <img
-            src={`https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`}
+            src={
+              posterPath != null
+                ? `https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`
+                : Default
+            }
             alt=""
           />
           <div className="component-title">
@@ -80,36 +95,43 @@ function Latest() {
     <div className="categories-container">
       <div className="top-search">
         <h1>Latest {movieCategory ? "Movies" : "TV Series"}</h1>
-        <div className="categories-search">
-          <input type="text" placeholder="Search query" />
-          <img src={Search} alt="" />
-        </div>
         <div className="categories-buttons">
-          <button onClick={movieHandler} id="movies">
+          <button onClick={movieHandler} id={movieCategory && "active"}>
             Movies
           </button>
-          <button onClick={tvHandler}>TV Series</button>
+          <button onClick={tvHandler} id={!movieCategory && "active"}>
+            TV Series
+          </button>
+        </div>
+        <div className="searchCard">
+          <h2>Search</h2>
+          <div className="categories-search">
+            <input type="text" placeholder="Search query" />
+            {/* <img src={Search} alt="" /> */}
+            <div className="searchButton">Search</div>
+          </div>
         </div>
       </div>
-      <div className="main-content">
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : (
-          latestList.map((e) => (
+      {isLoading ? (
+        <div className="loadingContainer">Loading...</div>
+      ) : (
+        <div className="main-content">
+          {latestList.map((e) => (
             <Compo
+              key={e.id}
               id={e.id}
               posterPath={e.poster_path}
               title={e.title}
               relDate={e.release_date}
             />
-          ))
-        )}
-      </div>
-      <div className="view-more-button">
-        <div onClick={getCounter} className="button">
-          <h2>View More</h2>
+          ))}
+          <div className="view-more-button">
+            <div onClick={getCounter} className="button">
+              <h2>View More</h2>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

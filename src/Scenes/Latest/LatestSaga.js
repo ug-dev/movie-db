@@ -40,7 +40,6 @@ function* fetchLatestMovieList({ payload }) {
 function* fetchLatestTVList({ payload }) {
   try {
     const data = yield getLatestTVList(payload);
-
     const results = data.results;
     const movieList = results.map((movie) => {
       return {
