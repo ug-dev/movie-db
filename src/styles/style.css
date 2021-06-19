@@ -312,7 +312,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 10px;
+  margin-top: 20px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -337,21 +337,46 @@
   width: 48px;
 }
 
-.categories-container .top-search select {
-  width: 200px;
-  height: 30px;
-  border: none;
+.categories-container .top-search .categories-buttons {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 0;
+}
+
+.categories-container .top-search .categories-buttons button {
+  cursor: pointer;
+  height: 40px;
+  width: 100px;
+  border: none;
   border-radius: 5px;
-  padding: 0 10px;
-  outline: none;
+  font-size: 14px;
+  background-color: #00cfc3;
+  color: #323232;
+}
+
+.categories-container .top-search .categories-buttons button:hover {
+  -webkit-box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.categories-container .top-search .categories-buttons #movies {
+  margin-right: 15px;
 }
 
 .categories-container .main-content {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: 90%;
+  width: 90vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -363,6 +388,16 @@
           align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.categories-container .main-content .myMovieCard {
+  width: calc(90vw / 5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .categories-container .main-content .component {
@@ -380,12 +415,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 0 15px;
   margin-bottom: 30px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: 170px;
+  width: 80%;
   border-radius: 10px;
   -webkit-box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
           box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
@@ -396,15 +430,12 @@
 }
 
 .categories-container .main-content .component img {
-  height: 250px;
+  height: auto;
   width: 100%;
   border-radius: 10px 10px 0 0;
 }
 
 .categories-container .main-content .component .component-title {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -425,12 +456,17 @@
 }
 
 .categories-container .main-content .component .component-title h3 {
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 16px;
   color: #121212;
   margin-left: 10px;
 }
 
 .categories-container .main-content .component .component-title p {
+  text-overflow: ellipsis;
   font-size: 12px;
   color: #444;
   line-height: 1.5;
@@ -476,7 +512,25 @@
   color: #323232;
 }
 
+@media only screen and (max-width: 1200px) {
+  .categories-container .main-content .myMovieCard {
+    width: calc(90vw / 4);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .categories-container .main-content .myMovieCard {
+    width: calc(90vw / 2);
+  }
+}
+
 @media only screen and (max-width: 600px) {
+  .categories-container .main-content .myMovieCard {
+    width: calc(90vw / 2);
+  }
+}
+
+@media only screen and (max-width: 400px) {
   .categories-container {
     padding-right: 15px;
     padding-left: 15px;
@@ -490,28 +544,15 @@
   .categories-container .top-search .categories-search img {
     cursor: none;
   }
+  .categories-container .main-content .myMovieCard {
+    width: calc(90vw / 1);
+  }
   .categories-container .main-content .component {
     cursor: none;
-    -webkit-box-flex: 0;
-        -ms-flex-positive: 0;
-            flex-grow: 0;
-    width: 180px;
   }
   .categories-container .view-more-button .button {
     width: 100%;
     margin-right: 0;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .categories-container .main-content .component {
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-    width: 220px;
-  }
-  .categories-container .main-content .component img {
-    height: 400px;
   }
 }
 
