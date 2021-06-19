@@ -1,0 +1,27 @@
+image: node:12.13.0-alpine
+
+stages:
+  - build
+  - deploy
+
+install-nodeModules:
+    stage: build
+    script:
+        - npm i -g firebase-tools
+        - npm install
+    only:
+      - master
+
+build-react:
+    stage: build
+    script:
+        - npm run build
+    only:
+      - master
+
+deploy-hoasting:
+  stage: deploy
+  script:
+    - firebase deploy --only hosting --token $FIREBASE_TOKEN
+  only:
+      - master
