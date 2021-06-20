@@ -3,46 +3,75 @@
   min-height: calc(100vh - 70px);
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
+  align-items: flex-start;
+  flex-direction: row;
   background-color: #232323;
+  padding: 40px;
+  width: 100vw;
+  overflow-x: hidden;
 
   .top-search {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    padding: 40px 0;
     height: fit-content;
-    width: 100%;
-
+    width: 260px;
+    .searchCard {
+      width: 260px;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+      background: #232323;
+      padding: 12px;
+      margin-top: 24px;
+      h2 {
+        font-size: 17px;
+        color: #e5e5e5;
+        margin-bottom: 12px;
+      }
+    }
+    .searchButton {
+      outline: none;
+      height: 40px;
+      width: 95%;
+      border-radius: 5px;
+      border: none;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #00cfc3;
+      margin-top: 12px;
+      color: #fff;
+      cursor: pointer;
+    }
     h1 {
       font-size: 28px;
       text-align: center;
       color: #e5e5e5;
+      margin-bottom: 24px;
     }
 
     .categories-search {
       display: flex;
-      margin-top: 20px;
+
       justify-content: center;
       align-items: center;
+      flex-direction: column;
 
       input {
-        margin-right: 10px;
         outline: none;
-        height: 45px;
-        width: 350px;
-        border-radius: 50px;
+        height: 40px;
+        width: 95%;
+        border-radius: 5px;
         border: none;
-        padding: 0 20px;
+        padding: 0 12px;
       }
 
-      img {
-        cursor: pointer;
-        height: 48px;
-        width: 48px;
-      }
+      // img {
+      //   cursor: pointer;
+      //   height: 48px;
+      //   width: 48px;
+      // }
     }
 
     .categories-buttons {
@@ -51,39 +80,51 @@
       margin-top: 15px;
       display: flex;
       justify-content: center;
-      padding: 10px 0;
-
+      border-radius: 70px;
+      overflow: hidden;
+      background: #fff;
       button {
         cursor: pointer;
+        border-radius: 70px;
         height: 40px;
-        width: 100px;
+        width: 50%;
         border: none;
-        border-radius: 5px;
+
         font-size: 14px;
-        background-color: #00cfc3;
+        background: #fff;
         color: #323232;
 
-        &:hover {
-          box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+        &#active {
+          background-color: #00cfc3;
+          color: #fff;
         }
-      }
-
-      #movies {
-        margin-right: 15px;
       }
     }
   }
 
+  .loadingContainer {
+    width: 90vw;
+    height: calc(100vh - 70px - 80px);
+    font-size: 28px;
+    text-align: center;
+    color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .main-content {
     height: fit-content;
-    width: 90vw;
+    width: calc(90vw - 260px);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
+    overflow-y: auto;
+    padding-left: 40px;
 
     .myMovieCard {
-      width: calc(90vw / 5);
+      width: calc(100% / 4);
+
       display: flex;
       justify-content: center;
     }
@@ -99,6 +140,9 @@
       width: 80%;
       border-radius: 10px;
       box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
+      background-image: url("../images/img.png");
+      background-position: center;
+      background-size: cover;
 
       &:hover {
         .component-title {
@@ -108,7 +152,7 @@
         }
       }
       img {
-        height: auto;
+        height: calc((90vw - 260px) / 4 * 0.751 * 1.5);
         width: 100%;
         border-radius: 10px 10px 0 0;
       }
@@ -146,7 +190,7 @@
 
   .view-more-button {
     height: fit-content;
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-self: center;
@@ -154,6 +198,7 @@
     padding-top: 10px;
 
     .button {
+      width: 100%;
       cursor: pointer;
       background-color: #00cfc3;
       display: flex;
@@ -176,51 +221,87 @@
   .categories-container {
     .main-content {
       .myMovieCard {
-        width: calc(90vw / 4);
+        width: calc(100% / 3);
+        img {
+          height: calc((90vw - 260px) / 3 * 0.751 * 1.5);
+        }
       }
     }
   }
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   .categories-container {
     .main-content {
       .myMovieCard {
-        width: calc(90vw / 2);
+        width: calc(100% / 2);
+        img {
+          height: calc((90vw - 260px) / 2 * 0.751 * 1.5);
+        }
       }
     }
   }
 }
+@media only screen and (max-width: 800px) {
+  .categories-container {
+    .main-content {
+      .myMovieCard {
+        width: calc(100% / 1);
+        img {
+          height: calc((90vw - 260px) / 1 * 0.751 * 1.5);
+        }
+      }
+    }
+  }
+}
+// @media only screen and (max-width: 600px) {
+//   .categories-container {
+//     flex-direction: column;
+//     .top-search {
+//       margin-bottom: 24px;
+//       width: 100%;
+//       .searchCard {
+//         width: 100%;
+//       }
+//     }
+//     .main-content {
+//       width: 100%;
+//       padding-left: 0;
+//       align-items: center;
+//       justify-content: center;
+//       .myMovieCard {
+//         width: calc(95%);
+//       }
+//     }
+//   }
+// }
+
 @media only screen and (max-width: 600px) {
   .categories-container {
-    .main-content {
-      .myMovieCard {
-        width: calc(90vw / 2);
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .categories-container {
+    flex-direction: column;
     padding-right: 15px;
     padding-left: 15px;
     .top-search {
+      margin-bottom: 24px;
+      width: 100%;
+      .searchCard {
+        width: 100%;
+      }
       .categories-search {
         width: 100%;
-
-        input {
-          width: 100%;
-        }
-
-        img {
-          cursor: none;
-        }
       }
     }
 
     .main-content {
+      width: 100%;
+      padding-left: 0;
+      align-items: center;
+      justify-content: center;
       .myMovieCard {
-        width: calc(90vw / 1);
+        width: 100%;
+        img {
+          height: auto;
+          width: 100%;
+        }
       }
       .component {
         cursor: none;
