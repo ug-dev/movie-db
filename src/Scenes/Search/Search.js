@@ -1,15 +1,8 @@
-import SearchIcon from "../../images/search-icon.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { getSearchList } from "../Search/SearchActions";
 import { category } from "../GlobalActions";
-import {
-  productDetail,
-  productTvDetail,
-  castDetail,
-  castTvDetail,
-} from "../Detail/DetailActions";
 import Default from "../../images/default.jpg";
 
 const navstyle = {
@@ -36,12 +29,8 @@ function Search() {
     const setDetailPage = () => {
       if (mediaType !== "tv") {
         dispatch(category(true));
-        dispatch(productDetail(id));
-        dispatch(castDetail(id));
       } else {
         dispatch(category(false));
-        dispatch(productTvDetail(id));
-        dispatch(castTvDetail(id));
       }
     };
 
@@ -51,7 +40,7 @@ function Search() {
           onClick={setDetailPage}
           style={navstyle}
           className="component"
-          to="/detail-page"
+          to={"/search-page/" + id}
         >
           <img
             src={
@@ -78,13 +67,18 @@ function Search() {
     <div className="categories-container">
       <div className="top-search">
         <h1>Search Result</h1>
-        <div className="categories-search">
-          <input
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            placeholder="Search query"
-          />
-          <img onClick={setSearchPage} src={SearchIcon} alt="" />
+        <div className="searchCard">
+          <h2>Search</h2>
+          <div className="categories-search">
+            <input
+              onChange={(event) => setQuery(event.target.value)}
+              type="text"
+              placeholder="Search query"
+            />
+            <Link style={navstyle} onClick={setSearchPage} to="/search-page">
+              <div className="searchButton">Search</div>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="main-content">

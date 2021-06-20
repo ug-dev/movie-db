@@ -1,16 +1,42 @@
 import Default from "../../images/default.jpg";
 import { useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
+import {
+  castTvDetail,
+  productTvDetail,
+  resetCastDetail,
+  resetProductDetail,
+  getProductDetail,
+  getCastDetail,
+} from "./DetailActions";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 function DetailPage() {
+  const dispatch = useDispatch();
+  let { id } = useParams();
   const { movieCategory, productDetail, castDetail } = useSelector(
     (state) => state
   );
   const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
+    console.log({ id });
     window.scrollTo(0, 0);
     setisLoading(true);
+    if (movieCategory) {
+      dispatch(getProductDetail(id));
+      dispatch(getCastDetail(id));
+    } else {
+      dispatch(productTvDetail(id));
+      dispatch(castTvDetail(id));
+    }
+
+    return () => {
+      dispatch(resetProductDetail());
+      dispatch(resetCastDetail());
+      console.log("i am going");
+    };
   }, []);
 
   useEffect(() => {

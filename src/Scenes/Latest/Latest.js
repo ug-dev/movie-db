@@ -1,14 +1,8 @@
-import Search from "../../images/search-icon.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { getSearchList } from "../Search/SearchActions";
-import {
-  productDetail,
-  productTvDetail,
-  castDetail,
-  castTvDetail,
-} from "../Detail/DetailActions";
+
 import { category } from "../GlobalActions";
 import { getLatestList, getLatestTvList } from "./LatestActions";
 import Default from "../../images/default.jpg";
@@ -66,23 +60,13 @@ function Latest() {
   };
 
   const Compo = ({ id, posterPath, title, relDate }) => {
-    const setDetailPage = () => {
-      if (movieCategory) {
-        dispatch(productDetail(id));
-        dispatch(castDetail(id));
-      } else {
-        dispatch(productTvDetail(id));
-        dispatch(castTvDetail(id));
-      }
-    };
-
     return (
       <div className={"myMovieCard"}>
         <Link
-          onClick={setDetailPage}
+          // onClick={setDetailPage}
           style={navstyle}
           className="component"
-          to="/detail-page"
+          to={"/latest/" + id}
         >
           <img
             src={
@@ -109,16 +93,6 @@ function Latest() {
     <div className="categories-container">
       <div className="top-search">
         <h1>Latest {movieCategory ? "Movies" : "TV Series"}</h1>
-        <div className="categories-search">
-          <input
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            placeholder="Search query"
-          />
-          <Link onClick={setSearchPage} to="/search-page">
-            <img src={Search} alt="" />
-          </Link>
-        </div>
         <div className="categories-buttons">
           <button onClick={movieHandler} id={movieCategory && "active"}>
             Movies
@@ -130,9 +104,14 @@ function Latest() {
         <div className="searchCard">
           <h2>Search</h2>
           <div className="categories-search">
-            <input type="text" placeholder="Search query" />
-            {/* <img src={Search} alt="" /> */}
-            <div className="searchButton">Search</div>
+            <input
+              onChange={(event) => setQuery(event.target.value)}
+              type="text"
+              placeholder="Search query"
+            />
+            <Link style={navstyle} onClick={setSearchPage} to="/search-page">
+              <div className="searchButton">Search</div>
+            </Link>
           </div>
         </div>
       </div>

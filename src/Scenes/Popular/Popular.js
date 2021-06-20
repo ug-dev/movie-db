@@ -66,24 +66,9 @@ function Popular() {
     }
   };
   const Compo = ({ id, posterPath, title, relDate }) => {
-    const setDetailPage = () => {
-      if (movieCategory) {
-        dispatch(productDetail(id));
-        dispatch(castDetail(id));
-      } else {
-        dispatch(productTvDetail(id));
-        dispatch(castTvDetail(id));
-      }
-    };
-
     return (
       <div className={"myMovieCard"}>
-        <Link
-          onClick={setDetailPage}
-          style={navstyle}
-          className="component"
-          to="/detail-page"
-        >
+        <Link style={navstyle} className="component" to={"/popular/" + id}>
           <img
             src={
               posterPath != null
@@ -109,17 +94,6 @@ function Popular() {
     <div className="categories-container">
       <div className="top-search">
         <h1>Popular {movieCategory ? "Movies" : "TV Series"}</h1>
-        <div className="categories-search">
-          <input
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            placeholder="Search query"
-          />
-          <Link onClick={setSearchPage} to="/search-page">
-            <img src={Search} alt="" />
-          </Link>
-        </div>
-        <h1>Latest {movieCategory ? "Movies" : "TV Series"}</h1>
         <div className="categories-buttons">
           <button onClick={movieHandler} id={movieCategory && "active"}>
             Movies
@@ -131,9 +105,14 @@ function Popular() {
         <div className="searchCard">
           <h2>Search</h2>
           <div className="categories-search">
-            <input type="text" placeholder="Search query" />
-            {/* <img src={Search} alt="" /> */}
-            <div className="searchButton">Search</div>
+            <input
+              onChange={(event) => setQuery(event.target.value)}
+              type="text"
+              placeholder="Search query"
+            />
+            <Link style={navstyle} onClick={setSearchPage} to="/search-page">
+              <div className="searchButton">Search</div>
+            </Link>
           </div>
         </div>
       </div>
