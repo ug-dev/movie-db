@@ -1,11 +1,17 @@
 import Search from "../../images/search-icon.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { productDetail, productTvDetail } from "../Detail/DetailActions";
+import {
+  productDetail,
+  productTvDetail,
+  castDetail,
+  castTvDetail,
+} from "../Detail/DetailActions";
 import { category } from "../GlobalActions";
 import React, { useEffect, useState } from "react";
 import { getTopRatedList, getTopRatedTvList } from "./TopRatedActions";
 import Default from "../../images/default.jpg";
+import { getSearchList } from "../Search/SearchActions";
 
 const navstyle = {
   textDecoration: "none",
@@ -16,8 +22,10 @@ function TopRated() {
   const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState(true);
   const [pageCounter, setCounter] = useState(1);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
+    setisLoading(true);
     window.scrollTo(0, 0);
     if (movieCategory) {
       dispatch(getTopRatedList());
@@ -61,8 +69,10 @@ function TopRated() {
     const setDetailPage = () => {
       if (movieCategory) {
         dispatch(productDetail(id));
+        dispatch(castDetail(id));
       } else {
         dispatch(productTvDetail(id));
+        dispatch(castTvDetail(id));
       }
     };
 
@@ -91,13 +101,23 @@ function TopRated() {
     );
   };
 
+  const setSearchPage = () => {
+    dispatch(getSearchList(query));
+  };
+
   return (
     <div className="categories-container">
       <div className="top-search">
         <h1>Top Rated {movieCategory ? "Movies" : "TV Series"}</h1>
         <div className="categories-search">
-          <input type="text" placeholder="Search query" />
-          <img src={Search} alt="" />
+          <input
+            onChange={(event) => setQuery(event.target.value)}
+            type="text"
+            placeholder="Search query"
+          />
+          <Link onClick={setSearchPage} to="/search-page">
+            <img src={Search} alt="" />
+          </Link>
         </div>
         <div className="categories-buttons">
           <button onClick={movieHandler} id="movies">
@@ -108,7 +128,7 @@ function TopRated() {
       </div>
       <div className="main-content">
         {isLoading ? (
-          <div>Loading...</div>
+          <div id="not-found">Loading...</div>
         ) : (
           topRatedList.map((e) => (
             <Compo

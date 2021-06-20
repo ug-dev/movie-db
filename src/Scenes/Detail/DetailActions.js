@@ -25,6 +25,13 @@ export const castDetail = (detail) => {
   };
 };
 
+export const castTvDetail = (detail) => {
+  return {
+    type: "CAST_TV_DETAIL",
+    payload: detail,
+  };
+};
+
 export const castDetailSuccess = (detail) => {
   return {
     type: "CAST_DETAIL_SUCCESS",
