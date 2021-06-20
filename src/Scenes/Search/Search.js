@@ -2,71 +2,45 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { getSearchList } from "../Search/SearchActions";
-
 import { category } from "../GlobalActions";
-import { getLatestList, getLatestTvList } from "./LatestActions";
 import Default from "../../images/default.jpg";
 
 const navstyle = {
   textDecoration: "none",
 };
 
-function Latest() {
-  const { movieCategory, latestList } = useSelector((state) => state);
+function Search() {
+  const { searchList } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState(true);
-  const [pageCounter, setCounter] = useState(1);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
     setisLoading(true);
     window.scrollTo(0, 0);
-    if (movieCategory) {
-      dispatch(getLatestList());
-    } else {
-      dispatch(getLatestTvList());
-    }
   }, []);
 
   useEffect(() => {
+    setisLoading(false);
     window.scrollTo(0, 0);
-    setTimeout(() => {
-      setisLoading(false);
-    }, 500);
-  }, [latestList]);
+  }, [searchList]);
 
-  const getCounter = () => {
-    setCounter(pageCounter + 1);
-    if (movieCategory) {
-      dispatch(getLatestList(pageCounter + 1));
-    } else {
-      dispatch(getLatestTvList(pageCounter + 1));
-    }
-  };
+  const Compo = ({ id, mediaType, posterPath, title, relDate }) => {
+    const setDetailPage = () => {
+      if (mediaType !== "tv") {
+        dispatch(category(true));
+      } else {
+        dispatch(category(false));
+      }
+    };
 
-  const tvHandler = () => {
-    if (movieCategory) {
-      setisLoading(true);
-      dispatch(getLatestTvList());
-      dispatch(category(false));
-    }
-  };
-  const movieHandler = () => {
-    if (!movieCategory) {
-      setisLoading(true);
-      dispatch(getLatestList());
-      dispatch(category(true));
-    }
-  };
-
-  const Compo = ({ id, posterPath, title, relDate }) => {
     return (
       <div className={"myMovieCard"}>
         <Link
-          // onClick={setDetailPage}
+          onClick={setDetailPage}
           style={navstyle}
           className="component"
-          to={"/latest/" + id}
+          to={"/search-page/" + id}
         >
           <img
             src={
@@ -92,15 +66,7 @@ function Latest() {
   return (
     <div className="categories-container">
       <div className="top-search">
-        <h1>Latest {movieCategory ? "Movies" : "TV Series"}</h1>
-        <div className="categories-buttons">
-          <button onClick={movieHandler} id={movieCategory && "active"}>
-            Movies
-          </button>
-          <button onClick={tvHandler} id={!movieCategory && "active"}>
-            TV Series
-          </button>
-        </div>
+        <h1>Search Result</h1>
         <div className="searchCard">
           <h2>Search</h2>
           <div className="categories-search">
@@ -115,28 +81,26 @@ function Latest() {
           </div>
         </div>
       </div>
-      {isLoading ? (
-        <div className="loadingContainer">Loading...</div>
-      ) : (
-        <div className="main-content">
-          {latestList.map((e) => (
+      <div className="main-content">
+        {isLoading ? (
+          <div id="not-found">Loading...</div>
+        ) : searchList.length === 0 ? (
+          <div id="not-found">Data Not Found!</div>
+        ) : (
+          searchList.map((e) => (
             <Compo
               key={e.id}
               id={e.id}
+              mediaType={e.media_type}
               posterPath={e.poster_path}
-              title={e.title}
-              relDate={e.release_date}
+              title={e.media_type === "tv" ? e.name : e.title}
+              relDate={e.media_type === "tv" ? e.date : e.release_date}
             />
-          ))}
-          <div className="view-more-button">
-            <div onClick={getCounter} className="button">
-              <h2>View More</h2>
-            </div>
-          </div>
-        </div>
-      )}
+          ))
+        )}
+      </div>
     </div>
   );
 }
 
-export default Latest;
+export default Search;

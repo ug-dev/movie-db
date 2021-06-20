@@ -1,7 +1,9 @@
-const DetailReducer = (state = "", action) => {
+const DetailReducer = (state = [], action) => {
   switch (action.type) {
-    case "PRODUCT_DETAIL_SUCCESS":
+    case "CAST_DETAIL_SUCCESS":
       return (state = action.payload);
+    case "RESET_CAST_DETAIL":
+      return (state = []);
     default:
       return state;
   }

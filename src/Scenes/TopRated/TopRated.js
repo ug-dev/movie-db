@@ -1,11 +1,17 @@
 import Search from "../../images/search-icon.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { productDetail, productTvDetail } from "../Detail/DetailActions";
+import {
+  productDetail,
+  productTvDetail,
+  castDetail,
+  castTvDetail,
+} from "../Detail/DetailActions";
 import { category } from "../GlobalActions";
 import React, { useEffect, useState } from "react";
 import { getTopRatedList, getTopRatedTvList } from "./TopRatedActions";
 import Default from "../../images/default.jpg";
+import { getSearchList } from "../Search/SearchActions";
 
 const navstyle = {
   textDecoration: "none",
@@ -16,8 +22,10 @@ function TopRated() {
   const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState(true);
   const [pageCounter, setCounter] = useState(1);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
+    setisLoading(true);
     window.scrollTo(0, 0);
     if (movieCategory) {
       dispatch(getTopRatedList());
@@ -58,22 +66,9 @@ function TopRated() {
   };
 
   const Compo = ({ id, posterPath, title, relDate }) => {
-    const setDetailPage = () => {
-      if (movieCategory) {
-        dispatch(productDetail(id));
-      } else {
-        dispatch(productTvDetail(id));
-      }
-    };
-
     return (
       <div className={"myMovieCard"}>
-        <Link
-          onClick={setDetailPage}
-          style={navstyle}
-          className="component"
-          to="/detail-page"
-        >
+        <Link style={navstyle} className="component" to={"/top-rated/" + id}>
           <img
             src={
               posterPath != null
@@ -91,10 +86,14 @@ function TopRated() {
     );
   };
 
+  const setSearchPage = () => {
+    dispatch(getSearchList(query));
+  };
+
   return (
     <div className="categories-container">
       <div className="top-search">
-        <h1>Latest {movieCategory ? "Movies" : "TV Series"}</h1>
+        <h1>Top Rated {movieCategory ? "Movies" : "TV Series"}</h1>
         <div className="categories-buttons">
           <button onClick={movieHandler} id={movieCategory && "active"}>
             Movies
@@ -106,9 +105,14 @@ function TopRated() {
         <div className="searchCard">
           <h2>Search</h2>
           <div className="categories-search">
-            <input type="text" placeholder="Search query" />
-            {/* <img src={Search} alt="" /> */}
-            <div className="searchButton">Search</div>
+            <input
+              onChange={(event) => setQuery(event.target.value)}
+              type="text"
+              placeholder="Search query"
+            />
+            <Link style={navstyle} onClick={setSearchPage} to="/search-page">
+              <div className="searchButton">Search</div>
+            </Link>
           </div>
         </div>
       </div>
